@@ -1,13 +1,14 @@
 'use strict';
 
+
 function getDogImage() {
     let answer = document.getElementById("breed").value;
-    console.log(answer)
-    fetch('https://dog.ceo/api/breed/hound/images/random')
+    //console.log(answer)
+    fetch(`https://dog.ceo/api/breed/${answer}/images/random`)
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+    .catch(error => console.log('Something went wrong. Try again later.'));
 }
 
 function displayResults(responseJson) {
@@ -28,7 +29,4 @@ function watchForm() {
   });
 }
 
-$(function() {
-    console.log('App loaded! Waiting for submit!');
-    watchForm();
-  });
+watchForm();
